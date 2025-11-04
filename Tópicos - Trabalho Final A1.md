@@ -1,11 +1,75 @@
-# Trabalho de Machine Learning
-## Análise de Dados e Predição com Treinamento Dinâmico
+# Trabalho Final
+## Aplicação Web com Análise de Dados e Machine Learning
+### Valor: 5.0
 
 ---
 
-## 📋 Requisitos do Projeto
+## 🎯 Objetivo do Projeto
 
-### Treinamento Dinâmico do Modelo
+Desenvolver uma aplicação web utilizando Python, que permita ao usuário fazer o upload de arquivos de dados no formato **.csv** e realizar análises visuais e predições com machine learning. O objetivo é oferecer insights interativos e predições personalizadas, com base em variáveis presentes nos dados, possibilitando diferentes tipos de visualizações e uso de classificadores configuráveis pelo usuário.
+
+---
+
+## 📚 TEMA
+
+O tema do conjunto de dados e os objetivos de análise com recursos de aprendizado de máquina ficarão a encargo da equipe e devem ser apresentados ao professor antes de iniciar as atividades de desenvolvimento, para evitar temas duplicados na turma.
+
+**IMPORTANTE:** Lembre-se de dizer seu tema durante a aula ou, caso não consiga estar em sala, via mensagem no Blackboard. Assim, caso haja temas iguais a ordem de horário será respeitada com prioridade aos grupos que estavam em sala.
+
+---
+
+## ⚙️ Funcionalidades
+
+1. Upload e Flexibilidade dos Dados
+2. Análise de Dados e Visualização
+3. Machine Learning com Personalização de Modelos
+4. Treinamento Dinâmico do Modelo
+
+---
+
+## 📤 1. Upload e Flexibilidade dos Dados
+
+- A aplicação deverá permitir o upload de um arquivo **.csv**, que contenha dados estruturados em colunas consistentes.
+
+- A aplicação deve ser capaz de gerar gráficos e análises automaticamente, considerando que o usuário poderá enviar diferentes bases com as mesmas colunas.
+
+- A flexibilidade dos dados é essencial para permitir a análise de dados variados, como de imóveis de cidades diferentes, jogos novos, ou atualização de dados cursos online.
+
+---
+
+## 📊 2. Análise de Dados e Visualização
+
+A aplicação deve gerar gráficos de análise com as variáveis do dataset, usando tanto gráficos básicos (como gráficos de barras e pizza) quanto gráficos mais avançados e interativos, como mapas para visualização de dados geográficos.
+
+### Exemplos:
+
+#### Imóveis:
+- Visualizar a distribuição de preços por bairro
+- A localização dos imóveis no mapa
+- A relação entre o preço e características como tamanho, número de quartos e ano de construção
+
+#### Jogos:
+- Analisar popularidade por país
+- Tipos de jogos mais jogados por região
+- Distribuição de avaliações por gênero
+- Gênero predominante em cada país
+
+#### Cursos Online:
+- Visualizar a popularidade por temas de cursos em cada país
+- Preços médios por idioma e país
+- Distribuição de alunos por área de estudo ou tipo de curso
+
+---
+
+## 🤖 3. Machine Learning com Personalização de Modelos
+
+- **Modelagem e Predição:** Aplicação de técnicas de machine learning com scikit-learn, incluindo a seleção de modelos adequados ao problema.
+
+- **Configuração de Modelos:** Implementação de opções de escolha de modelos e ajuste de parâmetros.
+
+---
+
+## 🔄 4. Treinamento Dinâmico do Modelo
 
 - Como a base de dados pode ser alterada com frequência, a aplicação deve incluir uma funcionalidade para **re-treinar o modelo** sempre que novos dados forem inseridos.
 
@@ -76,5 +140,3 @@
 ## 📅 Data de Entrega
 
 **Aulas do dia 13/11 e 14/11**
-
----
