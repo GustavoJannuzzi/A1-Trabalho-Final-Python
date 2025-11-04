@@ -1,25 +1,22 @@
-# 📊 Aplicação Web de Análise de Dados e Machine Learning
+# Aplicação Web de Análise de Dados e Machine Learning
 
 **Avaliação Final - Python**  
-**Desenvolvido por:** [Seu Nome]  
-**Data:** Outubro 2025
-
 ---
 
-## 📋 Descrição do Projeto
+## Descrição do Projeto
 
 Esta é uma aplicação web interativa desenvolvida em Python usando Streamlit que permite aos usuários:
 
-- 📤 **Upload de arquivos CSV** com dados estruturados
-- 🔍 **Análise exploratória** de dados com estatísticas e visualizações
-- 📈 **Visualizações interativas** (histogramas, box plots, scatter plots, matriz de correlação)
-- 🤖 **Machine Learning** com múltiplos algoritmos de regressão e classificação
-- 🎯 **Predições personalizadas** baseadas em modelos treinados
-- 🔄 **Treinamento dinâmico** de modelos com novos dados
+- **Upload de arquivos CSV** com dados estruturados
+- **Análise exploratória** de dados com estatísticas e visualizações
+- **Visualizações interativas** (histogramas, box plots, scatter plots, matriz de correlação)
+- **Machine Learning** com múltiplos algoritmos de regressão e classificação
+- **Predições personalizadas** baseadas em modelos treinados
+- **Treinamento dinâmico** de modelos com novos dados
 
 ---
 
-## 🚀 Funcionalidades Principais
+## Funcionalidades Principais
 
 ### 1. Upload e Flexibilidade dos Dados
 - Suporte para arquivos CSV com dados estruturados
@@ -80,7 +77,7 @@ Esta é uma aplicação web interativa desenvolvida em Python usando Streamlit q
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias 
 
 - **Python 3.x**
 - **Streamlit:** Framework para aplicações web interativas
@@ -91,11 +88,7 @@ Esta é uma aplicação web interativa desenvolvida em Python usando Streamlit q
 
 ---
 
-## 📦 Instalação
-
-### Pré-requisitos
-- Python 3.8 ou superior
-- pip (gerenciador de pacotes Python)
+## Instalação
 
 ### Passo a Passo
 
@@ -105,18 +98,7 @@ git clone <seu-repositorio>
 cd <nome-do-projeto>
 ```
 
-2. **Crie um ambiente virtual (recomendado):**
-```bash
-python -m venv venv
-
-# Windows
-venv\Scripts\activate
-
-# Linux/Mac
-source venv/bin/activate
-```
-
-3. **Instale as dependências:**
+2. **Instale as dependências:**
 ```bash
 pip install -r requirements.txt
 ```
@@ -126,14 +108,9 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-5. **Acesse no navegador:**
-```
-http://localhost:8501
-```
-
 ---
 
-## 📂 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 projeto/
@@ -143,7 +120,7 @@ projeto/
 ├── visualizations.py       # Criação de gráficos e visualizações
 ├── ml_models.py           # Treinamento e avaliação de modelos ML
 ├── requirements.txt       # Dependências do projeto
-└── README.md             # Este arquivo
+└── README.md             
 ```
 
 ### Descrição dos Módulos
@@ -180,7 +157,7 @@ Implementa:
 
 ---
 
-## 🎯 Como Usar
+## Como Usar
 
 ### 1. Upload de Dados
 
@@ -222,7 +199,7 @@ Implementa:
 
 ---
 
-## 📊 Exemplos de Datasets Compatíveis
+## Exemplos de Datasets Compatíveis
 
 ### Imóveis
 ```csv
@@ -244,24 +221,9 @@ sepal_length,sepal_width,petal_length,petal_width,species
 5.1,3.5,1.4,0.2,setosa
 7.0,3.2,4.7,1.4,versicolor
 ```
-
 ---
 
-## 🎨 Interface da Aplicação
-
-A aplicação possui:
-- **Sidebar:** Configurações e upload de arquivo
-- **Abas Principais:**
-  - 📊 Visão Geral dos Dados
-  - 📈 Análise Visual
-  - 🤖 Machine Learning
-  - 🎯 Fazer Predições
-- **Design Responsivo:** Adapta-se a diferentes tamanhos de tela
-- **Cores Temáticas:** Interface moderna e profissional
-
----
-
-## 🔧 Configurações Avançadas
+## Configurações Avançadas
 
 ### Parâmetros de Treinamento
 
@@ -280,9 +242,8 @@ RandomForestRegressor(n_estimators=200, random_state=42)
 
 ---
 
-## ⚠️ Requisitos dos Dados
+## Requisitos dos Dados
 
-Para melhor funcionamento:
 
 1. **Formato:** Arquivo CSV com cabeçalho
 2. **Codificação:** UTF-8 (recomendado)
@@ -293,7 +254,7 @@ Para melhor funcionamento:
 
 ---
 
-## 📈 Métricas de Performance
+## Métricas de Performance
 
 ### Regressão
 
@@ -310,25 +271,6 @@ Para melhor funcionamento:
 
 ---
 
-## 🐛 Solução de Problemas
-
-### Erro ao carregar CSV
-- Verifique a codificação do arquivo (use UTF-8)
-- Confirme que o separador é vírgula
-- Certifique-se de que há cabeçalho
-
-### Erro no treinamento
-- Verifique se há features suficientes
-- Confirme que target não está nas features
-- Cheque se há dados suficientes após remover nulos
-
-### Predição não funciona
-- Certifique-se de ter treinado os modelos primeiro
-- Verifique se inseriu valores válidos
-- Confirme que as features correspondem ao treinamento
-
----
-
 ## 🚀 Melhorias Futuras
 
 - [ ] Suporte para mais formatos (Excel, JSON)
@@ -342,45 +284,3 @@ Para melhor funcionamento:
 
 ---
 
-## 📚 Documentação Adicional
-
-### Scikit-learn
-https://scikit-learn.org/stable/documentation.html
-
-### Streamlit
-https://docs.streamlit.io/
-
-### Pandas
-https://pandas.pydata.org/docs/
-
----
-
-## 👨‍💻 Autor
-
-**[Seu Nome]**  
-Estudante de Python  
-Avaliação Final - 2025
-
----
-
-## 📝 Licença
-
-Este projeto foi desenvolvido para fins educacionais como parte da avaliação final do curso de Python.
-
----
-
-## 🙏 Agradecimentos
-
-Agradecimentos especiais ao professor e à turma pelo apoio durante o desenvolvimento deste projeto.
-
----
-
-## 📞 Contato
-
-Para dúvidas ou sugestões:
-- Email: [seu-email@exemplo.com]
-- GitHub: [seu-usuario]
-
----
-
-**Desenvolvido com ❤️ usando Python e Streamlit**
