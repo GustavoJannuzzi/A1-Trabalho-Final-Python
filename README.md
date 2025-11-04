@@ -94,7 +94,7 @@ Esta é uma aplicação web interativa desenvolvida em Python usando Streamlit q
 
 1. **Clone ou baixe o projeto:**
 ```bash
-git clone github.com/GustavoJannuzzi/A1-Trabalho-Final-Python
+git clone https://github.com/GustavoJannuzzi/A1-Trabalho-Final-Python.git
 cd A1-Trabalho-Final-Python
 ```
 
