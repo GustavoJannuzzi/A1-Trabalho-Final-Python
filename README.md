@@ -1,11 +1,14 @@
 # Aplicação Web de Análise de Dados e Machine Learning
 
-**Avaliação Final - Python**  
+**Avaliação Final - Python**
+
 ---
 
 ## Descrição do Projeto
 
-Esta é uma aplicação web interativa desenvolvida em Python usando Streamlit que permite aos usuários:
+Esta é uma aplicação web interativa desenvolvida em Python que combina um frontend em Streamlit com um backend em Flask API. A arquitetura separa a interface do usuário do processamento pesado, permitindo escalabilidade e melhor organização do código.
+
+### Funcionalidades:
 
 - **Upload de arquivos CSV** com dados estruturados
 - **Análise exploratória** de dados com estatísticas e visualizações
@@ -13,6 +16,132 @@ Esta é uma aplicação web interativa desenvolvida em Python usando Streamlit q
 - **Machine Learning** com múltiplos algoritmos de regressão e classificação
 - **Predições personalizadas** baseadas em modelos treinados
 - **Treinamento dinâmico** de modelos com novos dados
+
+---
+
+## Arquitetura
+
+### Backend (Flask API)
+Responsável pelo processamento pesado:
+- Processamento e limpeza de dados
+- Treinamento de modelos de Machine Learning
+- Avaliação de métricas
+- Predições
+
+### Frontend (Streamlit)
+Responsável pela interface do usuário:
+- Upload de arquivos
+- Visualizações interativas
+- Apresentação de resultados
+- Interface de configuração
+
+---
+
+## Estrutura do Projeto
+
+```
+projeto/
+│
+├── backend/
+│   ├── api.py                    # API Flask principal
+│   ├── data_processor.py         # Processamento de dados
+│   ├── ml_models.py              # Modelos de Machine Learning
+│   └── requirements.txt          # Dependências do backend
+│
+├── frontend/
+│   ├── app.py                    # Aplicação Streamlit
+│   ├── visualizations.py         # Visualizações de dados
+│   └── requirements.txt          # Dependências do frontend
+│
+├── requirements.txt              # Dependências completas
+└── README.md                     # Documentação
+```
+
+---
+
+## Instalação
+
+### Passo a Passo
+
+1. **Clone o repositório:**
+```bash
+git clone https://github.com/GustavoJannuzzi/A1-Trabalho-Final-Python.git
+cd A1-Trabalho-Final-Python
+```
+
+2. **Instale as dependências:**
+
+**Opção 1 - Instalar tudo:**
+```bash
+pip install -r requirements.txt
+```
+
+**Opção 2 - Instalar separadamente:**
+```bash
+# Backend
+pip install -r backend/requirements.txt
+
+# Frontend
+pip install -r frontend/requirements.txt
+```
+
+---
+
+## Como Executar
+
+### 1. Iniciar o Backend (Flask API)
+
+Em um terminal, execute:
+
+```bash
+python backend/api.py
+```
+
+A API estará disponível em: `http://localhost:5000`
+
+### 2. Iniciar o Frontend (Streamlit)
+
+Em outro terminal, execute:
+
+```bash
+streamlit run frontend/app.py
+```
+
+O Streamlit abrirá automaticamente em: `http://localhost:8501`
+
+**IMPORTANTE:** O backend DEVE estar rodando antes de iniciar o frontend!
+
+---
+
+## Tecnologias
+
+### Backend
+- **Flask:** Framework web para API REST
+- **Pandas:** Manipulação e análise de dados
+- **NumPy:** Computação numérica
+- **Scikit-learn:** Machine Learning e avaliação de modelos
+
+### Frontend
+- **Streamlit:** Framework para aplicações web interativas
+- **Matplotlib & Seaborn:** Visualização de dados
+- **Requests:** Comunicação HTTP com a API
+
+---
+
+## API Endpoints
+
+### Backend Flask API
+
+| Endpoint | Método | Descrição |
+|----------|--------|-----------|
+| `/api/health` | GET | Verificar status da API |
+| `/api/upload` | POST | Upload de arquivo CSV |
+| `/api/data/overview` | GET | Visão geral dos dados |
+| `/api/data/columns` | GET | Informações das colunas |
+| `/api/train` | POST | Treinar modelos ML |
+| `/api/predict` | POST | Fazer predições |
+| `/api/models` | GET | Listar modelos treinados |
+| `/api/reset` | POST | Limpar dados armazenados |
 
 ---
 
@@ -77,93 +206,15 @@ Esta é uma aplicação web interativa desenvolvida em Python usando Streamlit q
 
 ---
 
-## Tecnologias 
-
-- **Python 3.x**
-- **Streamlit:** Framework para aplicações web interativas
-- **Pandas:** Manipulação e análise de dados
-- **NumPy:** Computação numérica
-- **Matplotlib & Seaborn:** Visualização de dados
-- **Scikit-learn:** Machine Learning e avaliação de modelos
-
----
-
-## Instalação
-
-### Passo a Passo
-
-1. **Clone ou baixe o projeto:**
-```bash
-git clone https://github.com/GustavoJannuzzi/A1-Trabalho-Final-Python.git
-cd A1-Trabalho-Final-Python
-```
-
-2. **Instale as dependências:**
-```bash
-pip install -r requirements.txt
-```
-
-4. **Execute a aplicação:**
-```bash
-streamlit run app.py
-```
-
----
-
-## Estrutura do Projeto
-
-```
-projeto/
-│
-├── app.py                  # Arquivo principal do Streamlit
-├── data_processor.py       # Processamento e limpeza de dados
-├── visualizations.py       # Criação de gráficos e visualizações
-├── ml_models.py           # Treinamento e avaliação de modelos ML
-├── requirements.txt       # Dependências do projeto
-└── README.md             
-```
-
-### Descrição dos Módulos
-
-#### `app.py`
-Arquivo principal que contém:
-- Interface do usuário com Streamlit
-- Sistema de abas (Visão Geral, Análise Visual, ML, Predições)
-- Gerenciamento de estado da sessão
-- Coordenação entre todos os módulos
-
-#### `data_processor.py`
-Responsável por:
-- Limpeza de dados (valores nulos, duplicados)
-- Codificação de variáveis categóricas
-- Tratamento de outliers
-- Preparação de dados para ML
-
-#### `visualizations.py`
-Contém funções para:
-- Criação de histogramas e box plots
-- Gráficos de dispersão com linha de tendência
-- Matriz de correlação
-- Visualização de categorias
-- Comparação de modelos
-
-#### `ml_models.py`
-Implementa:
-- Treinamento de múltiplos modelos
-- Avaliação com métricas apropriadas
-- Sistema de predições
-- Validação cruzada
-- Re-treinamento dinâmico
-
----
-
 ## Como Usar
 
 ### 1. Upload de Dados
 
-1. Clique no botão "Browse files" na barra lateral
-2. Selecione um arquivo CSV
-3. O sistema carregará e mostrará informações básicas
+1. Certifique-se de que o backend está rodando
+2. Abra o frontend Streamlit
+3. Clique no botão "Browse files" na barra lateral
+4. Selecione um arquivo CSV
+5. O sistema carregará e mostrará informações básicas
 
 ### 2. Análise Exploratória
 
@@ -221,6 +272,7 @@ sepal_length,sepal_width,petal_length,petal_width,species
 5.1,3.5,1.4,0.2,setosa
 7.0,3.2,4.7,1.4,versicolor
 ```
+
 ---
 
 ## Configurações Avançadas
@@ -233,7 +285,7 @@ sepal_length,sepal_width,petal_length,petal_width,species
 
 ### Personalização de Modelos
 
-Os parâmetros dos modelos podem ser ajustados editando o arquivo `ml_models.py`:
+Os parâmetros dos modelos podem ser ajustados editando o arquivo `backend/ml_models.py`:
 
 ```python
 # Exemplo: Alterar número de árvores no Random Forest
@@ -243,7 +295,6 @@ RandomForestRegressor(n_estimators=200, random_state=42)
 ---
 
 ## Requisitos dos Dados
-
 
 1. **Formato:** Arquivo CSV com cabeçalho
 2. **Codificação:** UTF-8 (recomendado)
@@ -271,16 +322,73 @@ RandomForestRegressor(n_estimators=200, random_state=42)
 
 ---
 
-## 🚀 Melhorias Futuras
+## Troubleshooting
 
-- [ ] Suporte para mais formatos (Excel, JSON)
-- [ ] Gráficos 3D e mapas interativos
-- [ ] Otimização automática de hiperparâmetros
-- [ ] Export de modelos treinados
-- [ ] Relatórios em PDF
-- [ ] Detecção automática de outliers
-- [ ] Feature engineering automático
-- [ ] Comparação com baseline models
+### Erro: "Não foi possível conectar à API Flask"
+
+**Solução:** Certifique-se de que o backend está rodando:
+```bash
+python backend/api.py
+```
+
+### Erro: "ModuleNotFoundError"
+
+**Solução:** Instale as dependências:
+```bash
+pip install -r requirements.txt
+```
+
+### Erro: "Port already in use"
+
+**Solução:** Altere a porta no arquivo `backend/api.py`:
+```python
+app.run(debug=True, host='0.0.0.0', port=5001)  # Mudar de 5000 para 5001
+```
+
+E no arquivo `frontend/app.py`:
+```python
+API_URL = "http://localhost:5001"  # Atualizar a porta
+```
 
 ---
 
+## Melhorias Futuras
+
+- [ ] Suporte para mais formatos (Excel, JSON)
+- [ ] Cache de modelos treinados com Redis
+- [ ] Autenticação de usuários
+- [ ] Deploy com Docker
+- [ ] Otimização automática de hiperparâmetros
+- [ ] Export de modelos treinados
+- [ ] Relatórios em PDF
+- [ ] API de versionamento de modelos
+
+---
+
+## Contribuindo
+
+Contribuições são bem-vindas! Por favor:
+
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/NovaFuncionalidade`)
+3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
+4. Push para a branch (`git push origin feature/NovaFuncionalidade`)
+5. Abra um Pull Request
+
+---
+
+## Licença
+
+Este projeto foi desenvolvido para fins educacionais como parte da avaliação final da disciplina de Python.
+
+---
+
+## Autores
+
+Desenvolvido por alunos da disciplina de Tópicos Especiais em Python
+
+---
+
+## Contato
+
+Para dúvidas ou sugestões, abra uma issue no GitHub.
