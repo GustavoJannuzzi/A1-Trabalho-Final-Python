@@ -16,9 +16,6 @@ class DataProcessor:
     def __init__(self, dataframe):
         """
         Inicializa o processador de dados
-        
-        Args:
-            dataframe (pd.DataFrame): DataFrame com os dados brutos
         """
         self.df = dataframe.copy()
         self.label_encoders = {}
@@ -27,12 +24,6 @@ class DataProcessor:
     def remove_missing_values(self, threshold=0.5):
         """
         Remove colunas e linhas com muitos valores nulos
-        
-        Args:
-            threshold (float): Proporção máxima de valores nulos permitida (0-1)
-            
-        Returns:
-            pd.DataFrame: DataFrame sem valores nulos excessivos
         """
         # Remove colunas com mais de threshold% de valores nulos
         null_columns = self.df.columns[self.df.isnull().mean() > threshold]
@@ -46,12 +37,6 @@ class DataProcessor:
     def encode_categorical_features(self, columns):
         """
         Codifica variáveis categóricas usando Label Encoding
-        
-        Args:
-            columns (list): Lista de colunas categóricas para codificar
-            
-        Returns:
-            pd.DataFrame: DataFrame com colunas categóricas codificadas
         """
         for col in columns:
             if col in self.df.columns:
@@ -66,14 +51,6 @@ class DataProcessor:
     def handle_outliers(self, columns, method='iqr', threshold=1.5):
         """
         Trata outliers usando o método IQR ou Z-score
-        
-        Args:
-            columns (list): Lista de colunas numéricas para tratar
-            method (str): Método de detecção ('iqr' ou 'zscore')
-            threshold (float): Limite para considerar outlier
-            
-        Returns:
-            pd.DataFrame: DataFrame com outliers tratados
         """
         for col in columns:
             if col in self.df.columns and pd.api.types.is_numeric_dtype(self.df[col]):
@@ -100,12 +77,6 @@ class DataProcessor:
     def normalize_features(self, columns):
         """
         Normaliza features numéricas usando StandardScaler
-        
-        Args:
-            columns (list): Lista de colunas para normalizar
-            
-        Returns:
-            pd.DataFrame: DataFrame com features normalizadas
         """
         numeric_cols = [col for col in columns if col in self.df.columns 
                        and pd.api.types.is_numeric_dtype(self.df[col])]
@@ -118,14 +89,6 @@ class DataProcessor:
     def prepare_data(self, feature_columns, target_column, handle_missing=True):
         """
         Prepara os dados completos para machine learning
-        
-        Args:
-            feature_columns (list): Lista de colunas de features
-            target_column (str): Nome da coluna alvo
-            handle_missing (bool): Se True, remove valores nulos
-            
-        Returns:
-            tuple: (X, y) - Features e target preparados
         """
         try:
             # Criar cópia do dataframe
@@ -147,8 +110,6 @@ class DataProcessor:
             # Verificar se ainda temos dados
             if len(df_processed) == 0:
                 raise ValueError("Não há dados suficientes após remover valores nulos")
-            
-            print(f"Dados após limpeza: {len(df_processed)} linhas")
             
             # Codificar variáveis categóricas nas features
             categorical_features = [col for col in feature_columns 
@@ -202,9 +163,6 @@ class DataProcessor:
     def get_data_summary(self):
         """
         Retorna um resumo estatístico dos dados
-        
-        Returns:
-            dict: Dicionário com informações sobre os dados
         """
         summary = {
             'n_rows': len(self.df),
@@ -213,7 +171,7 @@ class DataProcessor:
             'missing_percentage': (self.df.isnull().sum().sum() / (len(self.df) * len(self.df.columns))) * 100,
             'numeric_columns': len(self.df.select_dtypes(include=[np.number]).columns),
             'categorical_columns': len(self.df.select_dtypes(include=['object']).columns),
-            'memory_usage': self.df.memory_usage(deep=True).sum() / 1024,  # KB
+            'memory_usage': self.df.memory_usage(deep=True).sum() / 1024,
             'duplicated_rows': self.df.duplicated().sum()
         }
         
@@ -222,9 +180,6 @@ class DataProcessor:
     def detect_and_handle_duplicates(self):
         """
         Detecta e remove linhas duplicadas
-        
-        Returns:
-            int: Número de linhas duplicadas removidas
         """
         n_duplicates = self.df.duplicated().sum()
         self.df = self.df.drop_duplicates()
@@ -234,13 +189,6 @@ class DataProcessor:
     def fill_missing_values(self, strategy='mean', columns=None):
         """
         Preenche valores nulos usando diferentes estratégias
-        
-        Args:
-            strategy (str): Estratégia de preenchimento ('mean', 'median', 'mode', 'constant')
-            columns (list): Lista de colunas para preencher (None = todas)
-            
-        Returns:
-            pd.DataFrame: DataFrame com valores preenchidos
         """
         if columns is None:
             columns = self.df.columns
@@ -264,9 +212,6 @@ class DataProcessor:
     def get_column_types(self):
         """
         Identifica tipos de colunas no dataset
-        
-        Returns:
-            dict: Dicionário com listas de colunas por tipo
         """
         numeric_cols = self.df.select_dtypes(include=[np.number]).columns.tolist()
         categorical_cols = self.df.select_dtypes(include=['object', 'category']).columns.tolist()

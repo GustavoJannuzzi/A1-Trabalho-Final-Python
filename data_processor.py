@@ -16,9 +16,6 @@ class DataProcessor:
     def __init__(self, dataframe):
         """
         Inicializa o processador de dados
-        
-        Args:
-            dataframe (pd.DataFrame): DataFrame com os dados brutos
         """
         self.df = dataframe.copy()
         self.label_encoders = {}
@@ -27,12 +24,6 @@ class DataProcessor:
     def remove_missing_values(self, threshold=0.5):
         """
         Remove colunas e linhas com muitos valores nulos
-        
-        Args:
-            threshold (float): Proporção máxima de valores nulos permitida (0-1)
-            
-        Returns:
-            pd.DataFrame: DataFrame sem valores nulos excessivos
         """
         # Remove colunas com mais de threshold% de valores nulos
         null_columns = self.df.columns[self.df.isnull().mean() > threshold]
@@ -46,12 +37,6 @@ class DataProcessor:
     def encode_categorical_features(self, columns):
         """
         Codifica variáveis categóricas usando Label Encoding
-        
-        Args:
-            columns (list): Lista de colunas categóricas para codificar
-            
-        Returns:
-            pd.DataFrame: DataFrame com colunas categóricas codificadas
         """
         for col in columns:
             if col in self.df.columns:
@@ -66,14 +51,6 @@ class DataProcessor:
     def handle_outliers(self, columns, method='iqr', threshold=1.5):
         """
         Trata outliers usando o método IQR ou Z-score
-        
-        Args:
-            columns (list): Lista de colunas numéricas para tratar
-            method (str): Método de detecção ('iqr' ou 'zscore')
-            threshold (float): Limite para considerar outlier
-            
-        Returns:
-            pd.DataFrame: DataFrame com outliers tratados
         """
         for col in columns:
             if col in self.df.columns and pd.api.types.is_numeric_dtype(self.df[col]):
@@ -118,14 +95,6 @@ class DataProcessor:
     def prepare_data(self, feature_columns, target_column, handle_missing=True):
         """
         Prepara os dados completos para machine learning
-        
-        Args:
-            feature_columns (list): Lista de colunas de features
-            target_column (str): Nome da coluna alvo
-            handle_missing (bool): Se True, remove valores nulos
-            
-        Returns:
-            tuple: (X, y) - Features e target preparados
         """
         try:
             # Criar cópia do dataframe

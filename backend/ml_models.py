@@ -33,9 +33,6 @@ class MLModelTrainer:
     def __init__(self, is_regression=True):
         """
         Inicializa o treinador de modelos
-        
-        Args:
-            is_regression (bool): True para regressão, False para classificação
         """
         self.is_regression = is_regression
         self.models = {}
@@ -72,16 +69,6 @@ class MLModelTrainer:
     def train_models(self, X, y, selected_models=None, test_size=0.2, random_state=42):
         """
         Treina múltiplos modelos e avalia seu desempenho
-        
-        Args:
-            X (pd.DataFrame): Features
-            y (pd.Series): Target
-            selected_models (list): Lista de nomes de modelos para treinar
-            test_size (float): Proporção do conjunto de teste
-            random_state (int): Seed para reprodutibilidade
-            
-        Returns:
-            dict: Dicionário com resultados de cada modelo
         """
         # Validar tamanho dos dados
         if len(X) == 0 or len(y) == 0:
@@ -102,9 +89,6 @@ class MLModelTrainer:
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
             X, y, test_size=test_size, random_state=random_state
         )
-        
-        print(f"Train set: {len(self.X_train)} amostras")
-        print(f"Test set: {len(self.X_test)} amostras")
         
         # Se não especificados, usar todos os modelos
         if selected_models is None:
@@ -140,12 +124,6 @@ class MLModelTrainer:
     def _evaluate_regression(self, y_pred):
         """
         Avalia modelo de regressão
-        
-        Args:
-            y_pred: Predições do modelo
-            
-        Returns:
-            dict: Métricas de avaliação
         """
         mse = mean_squared_error(self.y_test, y_pred)
         rmse = np.sqrt(mse)
@@ -166,12 +144,6 @@ class MLModelTrainer:
     def _evaluate_classification(self, y_pred):
         """
         Avalia modelo de classificação
-        
-        Args:
-            y_pred: Predições do modelo
-            
-        Returns:
-            dict: Métricas de avaliação
         """
         accuracy = accuracy_score(self.y_test, y_pred)
         
@@ -192,13 +164,6 @@ class MLModelTrainer:
     def predict(self, model_name, X_new):
         """
         Faz predições com um modelo treinado
-        
-        Args:
-            model_name (str): Nome do modelo a usar
-            X_new (pd.DataFrame): Dados para fazer predição
-            
-        Returns:
-            array: Predições
         """
         if model_name not in self.trained_models:
             raise ValueError(f"Modelo {model_name} não foi treinado")
@@ -215,15 +180,6 @@ class MLModelTrainer:
     def cross_validate(self, model_name, X, y, cv=5):
         """
         Realiza validação cruzada
-        
-        Args:
-            model_name (str): Nome do modelo
-            X (pd.DataFrame): Features
-            y (pd.Series): Target
-            cv (int): Número de folds
-            
-        Returns:
-            dict: Resultados da validação cruzada
         """
         if model_name not in self.models:
             raise ValueError(f"Modelo {model_name} não encontrado")
@@ -250,12 +206,6 @@ class MLModelTrainer:
     def get_feature_importance(self, model_name):
         """
         Obtém importância das features (para modelos baseados em árvore)
-        
-        Args:
-            model_name (str): Nome do modelo
-            
-        Returns:
-            pd.DataFrame: DataFrame com importância das features
         """
         if model_name not in self.trained_models:
             raise ValueError(f"Modelo {model_name} não foi treinado")
@@ -276,12 +226,6 @@ class MLModelTrainer:
     def get_model_parameters(self, model_name):
         """
         Obtém parâmetros de um modelo treinado
-        
-        Args:
-            model_name (str): Nome do modelo
-            
-        Returns:
-            dict: Parâmetros do modelo
         """
         if model_name not in self.trained_models:
             raise ValueError(f"Modelo {model_name} não foi treinado")
@@ -292,12 +236,6 @@ class MLModelTrainer:
     def get_confusion_matrix(self, model_name):
         """
         Gera matriz de confusão para modelos de classificação
-        
-        Args:
-            model_name (str): Nome do modelo
-            
-        Returns:
-            array: Matriz de confusão
         """
         if self.is_regression:
             raise ValueError("Matriz de confusão só está disponível para classificação")
@@ -313,12 +251,6 @@ class MLModelTrainer:
     def get_classification_report(self, model_name):
         """
         Gera relatório de classificação detalhado
-        
-        Args:
-            model_name (str): Nome do modelo
-            
-        Returns:
-            str: Relatório de classificação
         """
         if self.is_regression:
             raise ValueError("Relatório de classificação só está disponível para classificação")
@@ -334,14 +266,6 @@ class MLModelTrainer:
     def retrain_model(self, model_name, X_new, y_new):
         """
         Re-treina um modelo com novos dados
-        
-        Args:
-            model_name (str): Nome do modelo a re-treinar
-            X_new (pd.DataFrame): Novas features
-            y_new (pd.Series): Novo target
-            
-        Returns:
-            dict: Métricas do modelo re-treinado
         """
         if model_name not in self.models:
             raise ValueError(f"Modelo {model_name} não encontrado")
@@ -376,10 +300,6 @@ class MLModelTrainer:
     def save_model(self, model_name, filepath):
         """
         Salva um modelo treinado em disco
-        
-        Args:
-            model_name (str): Nome do modelo
-            filepath (str): Caminho do arquivo
         """
         import joblib
         
@@ -392,10 +312,6 @@ class MLModelTrainer:
     def load_model(self, model_name, filepath):
         """
         Carrega um modelo salvo
-        
-        Args:
-            model_name (str): Nome para o modelo
-            filepath (str): Caminho do arquivo
         """
         import joblib
         

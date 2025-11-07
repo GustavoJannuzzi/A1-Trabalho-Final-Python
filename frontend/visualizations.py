@@ -30,16 +30,9 @@ class DataVisualizer:
     def plot_histograms(self, columns, bins=30):
         """
         Cria histogramas para colunas numéricas
-        
-        Args:
-            columns (list): Lista de colunas para plotar
-            bins (int): Número de bins no histograma
-            
-        Returns:
-            matplotlib.figure.Figure: Figura com os histogramas
         """
         n_cols = len(columns)
-        n_rows = (n_cols + 2) // 3  # 3 colunas por linha
+        n_rows = (n_cols + 2) // 3
         
         fig, axes = plt.subplots(n_rows, 3, figsize=(15, 5*n_rows))
         axes = axes.flatten() if n_rows > 1 else [axes] if n_cols == 1 else axes
@@ -72,12 +65,6 @@ class DataVisualizer:
     def plot_boxplots(self, columns):
         """
         Cria box plots para detecção de outliers
-        
-        Args:
-            columns (list): Lista de colunas para plotar
-            
-        Returns:
-            matplotlib.figure.Figure: Figura com os box plots
         """
         n_cols = len(columns)
         n_rows = (n_cols + 2) // 3
@@ -121,14 +108,6 @@ class DataVisualizer:
     def plot_scatter(self, x_col, y_col, hue_col=None):
         """
         Cria gráfico de dispersão
-        
-        Args:
-            x_col (str): Coluna para eixo X
-            y_col (str): Coluna para eixo Y
-            hue_col (str): Coluna para colorir pontos (opcional)
-            
-        Returns:
-            matplotlib.figure.Figure: Figura com o scatter plot
         """
         fig, ax = plt.subplots(figsize=(12, 6))
         
@@ -216,13 +195,6 @@ class DataVisualizer:
     def plot_categorical_distribution(self, column, top_n=10):
         """
         Cria gráfico de barras para variável categórica
-        
-        Args:
-            column (str): Nome da coluna categórica
-            top_n (int): Número máximo de categorias a mostrar
-            
-        Returns:
-            matplotlib.figure.Figure: Figura com o gráfico de barras
         """
         # Contar valores
         value_counts = self.df[column].value_counts().head(top_n)
@@ -319,13 +291,6 @@ class DataVisualizer:
     def plot_model_comparison(results_df, metric):
         """
         Cria gráfico comparativo de modelos
-        
-        Args:
-            results_df (pd.DataFrame): DataFrame com resultados dos modelos
-            metric (str): Métrica principal para comparação
-            
-        Returns:
-            matplotlib.figure.Figure: Figura com comparação de modelos
         """
         fig, ax = plt.subplots(figsize=(12, 6))
         

@@ -25,7 +25,6 @@ storage = {
     'processor': None
 }
 
-
 @app.route('/api/health', methods=['GET'])
 def health_check():
     """Verifica se a API está funcionando"""

@@ -10,12 +10,10 @@ import requests
 import sys
 import os
 
-# Adicionar o diretório frontend ao path para importar visualizations
 sys.path.insert(0, os.path.dirname(__file__))
 
 from visualizations import DataVisualizer
 
-# URL da API Flask
 API_URL = "http://localhost:5000"
 
 # Configuração da página
@@ -26,7 +24,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# CSS customizado para melhorar a aparência
 st.markdown("""
     <style>
     .main-header {
@@ -82,13 +79,11 @@ def main():
                 unsafe_allow_html=True)
     st.markdown("---")
 
-    # Verificar conexão com API
     if not check_api_connection():
         st.error("ERRO: Não foi possível conectar à API Flask. Certifique-se de que o backend está rodando em http://localhost:5000")
         st.info("Para iniciar o backend, execute: python backend/api.py")
         return
 
-    # Sidebar - Configurações
     with st.sidebar:
         st.title("Configurações")
 
@@ -110,7 +105,7 @@ def main():
                     data_info = response.json()
 
                     # Carregar dados localmente para visualizações
-                    uploaded_file.seek(0)  # Reset file pointer
+                    uploaded_file.seek(0)
                     st.session_state.data = pd.read_csv(uploaded_file)
                     st.session_state.data_uploaded = True
 
@@ -143,11 +138,9 @@ def main():
             - Processamento: Python/Scikit-learn
             """)
 
-    # Conteúdo principal
     if not st.session_state.data_uploaded:
         st.info("Por favor, faça upload de um arquivo CSV para começar a análise")
 
-        # Exemplo de dados esperados
         st.markdown("### Formato Esperado dos Dados")
         st.markdown("""
         Seu arquivo CSV deve conter:
@@ -163,7 +156,6 @@ def main():
         """)
 
     else:
-        # Tabs principais
         tab1, tab2, tab3, tab4 = st.tabs([
             "Visão Geral dos Dados",
             "Análise Visual",
@@ -189,7 +181,6 @@ def show_data_overview():
     st.markdown('<h2 class="sub-header">Visão Geral dos Dados</h2>', unsafe_allow_html=True)
 
     try:
-        # Buscar dados da API
         response = requests.get(f"{API_URL}/api/data/overview")
 
         if response.status_code != 200:
@@ -221,7 +212,6 @@ def show_data_overview():
 
         st.dataframe(df.head(n_rows), use_container_width=True)
 
-        # Informações das colunas
         st.markdown("### Informações das Colunas")
         col_info = pd.DataFrame({
             'Tipo': df.dtypes,
@@ -232,7 +222,6 @@ def show_data_overview():
         })
         st.dataframe(col_info, use_container_width=True)
 
-        # Estatísticas descritivas
         st.markdown("### Estatísticas Descritivas")
         st.dataframe(df.describe(), use_container_width=True)
 
@@ -394,7 +383,6 @@ def show_machine_learning():
         st.warning("Selecione pelo menos um algoritmo")
         return
 
-    # Configurações de treinamento
     st.markdown("### Configurações de Treinamento")
 
     col1, col2, col3 = st.columns(3)
@@ -422,11 +410,9 @@ def show_machine_learning():
 
     st.markdown("---")
 
-    # Botão de executar análise
     if st.button("Executar Análise e Treinar Modelos", type="primary", use_container_width=True):
         with st.spinner("Processando dados e treinando modelos..."):
             try:
-                # Enviar requisição para API
                 payload = {
                     'features': features,
                     'target': target,
@@ -546,7 +532,6 @@ def show_predictions():
     # Fazer predição
     if st.button("Fazer Predição", type="primary", use_container_width=True):
         try:
-            # Enviar requisição para API
             payload = {
                 'model_name': selected_model,
                 'input_data': input_data
@@ -562,7 +547,6 @@ def show_predictions():
                 st.markdown("---")
                 st.markdown("### Resultado da Predição")
 
-                # Mostrar resultado
                 col1, col2 = st.columns([2, 1])
 
                 with col1:
@@ -578,7 +562,6 @@ def show_predictions():
                     else:
                         st.metric("Classe Predita", prediction)
 
-                # Mostrar métricas do modelo usado
                 st.markdown("---")
                 st.markdown(f"### Métricas do Modelo **{selected_model}**")
 
