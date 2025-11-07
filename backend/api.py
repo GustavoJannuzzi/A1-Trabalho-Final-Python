@@ -10,6 +10,12 @@ import numpy as np
 import io
 import base64
 import traceback
+import sys
+import os
+
+# Adicionar diretório backend ao path para imports
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from data_processor import DataProcessor
 from ml_models import MLModelTrainer
 
